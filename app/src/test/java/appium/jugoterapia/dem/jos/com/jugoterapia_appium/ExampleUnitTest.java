@@ -1,4 +1,4 @@
-package appium.jugoterapia.dem.jos.com.automation;
+package appium.jugoterapia.dem.jos.com.jugoterapia_appium;
 
 import org.junit.Test;
 

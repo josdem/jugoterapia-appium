@@ -1,4 +1,4 @@
-package appium.jugoterapia.dem.jos.com.automation;
+package appium.jugoterapia.dem.jos.com.jugoterapia_appium;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("appium.jugoterapia.dem.jos.com.automation", appContext.getPackageName());
+        assertEquals("appium.jugoterapia.dem.jos.com.jugoterapia_appium", appContext.getPackageName());
     }
 }

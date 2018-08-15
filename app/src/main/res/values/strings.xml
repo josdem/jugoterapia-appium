@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Automation</string>
+    <string name="app_name">jugoterapia-appium</string>
+    <string name="action_settings">Settings</string>
 </resources>
