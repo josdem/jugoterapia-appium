@@ -20,12 +20,12 @@ public class FirstTest {
     @Before
     public void setUp() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "Pixel");
+        capabilities.setCapability("deviceName", "Pixel 2");
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "Android");
         capabilities.setCapability(CapabilityType.VERSION, "9.0");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("appPackage", "com.android.calculator2");
-        capabilities.setCapability("appActivity", "com.josdem.jugoterapia.appium");
+        capabilities.setCapability("appPackage", "com.jugoterapia.josdem");
+        capabilities.setCapability("appActivity", "com.jugoterapia.josdem.activity.SignActivity");
 
         driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
