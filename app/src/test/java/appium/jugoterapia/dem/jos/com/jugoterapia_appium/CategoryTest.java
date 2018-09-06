@@ -13,7 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class FirstTest {
+public class CategoryTest {
 
     WebDriver driver;
 
@@ -25,14 +25,14 @@ public class FirstTest {
         capabilities.setCapability(CapabilityType.VERSION, "9.0");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("appPackage", "com.jugoterapia.josdem");
-        capabilities.setCapability("appActivity", "com.jugoterapia.josdem.activity.SignActivity");
+        capabilities.setCapability("appActivity", "com.jugoterapia.josdem.activity.CategoryActivity");
 
         driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testFirstCalculator() {
+    public void shouldSelectSaludable() {
         driver.findElements(By.xpath("//android.widget.Button")).get(0).click();
         driver.findElement(By.name("7")).click();
         driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
