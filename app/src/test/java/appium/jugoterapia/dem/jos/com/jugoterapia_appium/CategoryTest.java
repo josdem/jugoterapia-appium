@@ -1,38 +1,26 @@
 package appium.jugoterapia.dem.jos.com.jugoterapia_appium;
 
-import android.util.Log;
-import android.widget.ListView;
-
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.experimental.categories.Category;
+import org.junit.Test;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-
-
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
 
 import io.appium.java_client.AppiumDriver;
 
+import static org.junit.Assert.assertEquals;
+
 public class CategoryTest {
 
-
     AppiumDriver driver;
-
-
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -49,15 +37,15 @@ public class CategoryTest {
     }
 
     @Test
-    public void shouldSelectSaludable() throws Exception {
+    public void shouldSelectCurativos() throws Exception {
         System.out.println("Running shouldSelectSaludable at " + new Date());
         WebElement textView = driver.findElement(By.id("categoryTextView"));
-        System.out.print(textView);
-        //assertTrue(textView instanceof  RemoteWebDriver);
+        assertEquals("Curativos", textView.getText());
     }
 
     @After
-    public void End() {
+    public void End(){
         driver.quit();
     }
+
 }
