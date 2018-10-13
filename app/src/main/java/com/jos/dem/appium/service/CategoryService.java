@@ -1,4 +1,4 @@
-package com.dominos.das.mobile.service;
+package com.jos.dem.appium.service;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 

@@ -1,9 +1,9 @@
-package com.dominos.das.mobile.service.impl;
+package com.jos.dem.appium.service.impl;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import com.dominos.das.mobile.service.CategoryService;
+import com.jos.dem.appium.service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
 

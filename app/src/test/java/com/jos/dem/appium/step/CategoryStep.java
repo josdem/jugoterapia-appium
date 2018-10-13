@@ -1,4 +1,4 @@
-package steps;
+package com.jos.dem.appium.step;
 
 import static org.junit.Assert.assertEquals;
 
@@ -19,10 +19,10 @@ import cucumber.api.java.en.When;
 
 import io.appium.java_client.AppiumDriver;
 
-import com.dominos.das.mobile.service.CategoryService;
-import com.dominos.das.mobile.service.impl.CategoryServiceImpl;
+import com.jos.dem.appium.service.CategoryService;
+import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
-public class CategorySteps {
+public class CategoryStep {
 
   private AppiumDriver driver;
   private DesiredCapabilities capabilities = new DesiredCapabilities();
