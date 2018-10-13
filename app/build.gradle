@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'org.apache.commons:commons-lang3:3.8.1'
     implementation "info.cukes:cucumber-java:$cucumberVersion"
+    implementation "info.cukes:cucumber-junit:$cucumberVersion"
     implementation files('libs/java-client-6.1.0.jar')
     implementation files('libs/byte-buddy-1.8.15.jar')
     implementation files('libs/commons-codec-1.10.jar')

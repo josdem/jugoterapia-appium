@@ -24,8 +24,7 @@ public class CategorySteps {
   AppiumDriver driver;
   DesiredCapabilities capabilities = new DesiredCapabilities();
 
-  @Before
-  public void setUp() throws MalformedURLException {
+  private void setup() throws MalformedURLException {
     capabilities.setCapability("deviceName", "Pixel 2");
     capabilities.setCapability(CapabilityType.BROWSER_NAME, "Android");
     capabilities.setCapability(CapabilityType.VERSION, "9.0");
@@ -36,6 +35,7 @@ public class CategorySteps {
 
   @When("I launch the application")
   public void shouldOpenTheApplication() throws Exception {
+    setup();
     driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
@@ -45,10 +45,10 @@ public class CategorySteps {
     System.out.println("Running shouldSelectSaludable at " + new Date());
     WebElement textView = driver.findElement(By.id("categoryTextView"));
     assertEquals("Curativos", textView.getText());
+    end();
   }
 
-  @After
-  public void End(){
+  public void end(){
     driver.quit();
   }
 
