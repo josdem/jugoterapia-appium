@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+ext {
+    cucumberVersion = '1.2.5'
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -40,8 +44,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    implementation ('org.apache.commons:commons-lang3:3.8.1')
+    testImplementation("info.cukes:cucumber-java:$cucumberVersion")
     implementation files('libs/java-client-6.1.0.jar')
     implementation files('libs/byte-buddy-1.8.15.jar')
     implementation files('libs/commons-codec-1.10.jar')
