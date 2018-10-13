@@ -1,5 +1,7 @@
 package steps;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
@@ -17,25 +19,18 @@ import cucumber.api.java.en.When;
 
 import io.appium.java_client.AppiumDriver;
 
-import static org.junit.Assert.assertEquals;
+import com.dominos.das.mobile.service.CategoryService;
+import com.dominos.das.mobile.service.impl.CategoryServiceImpl;
 
 public class CategorySteps {
 
-  AppiumDriver driver;
-  DesiredCapabilities capabilities = new DesiredCapabilities();
-
-  private void setup() throws MalformedURLException {
-    capabilities.setCapability("deviceName", "Pixel 2");
-    capabilities.setCapability(CapabilityType.BROWSER_NAME, "Android");
-    capabilities.setCapability(CapabilityType.VERSION, "9.0");
-    capabilities.setCapability("platformName", "Android");
-    capabilities.setCapability("appPackage", "com.jugoterapia.josdem");
-    capabilities.setCapability("appActivity", "com.jugoterapia.josdem.activity.CategoryActivity");
-  }
+  private AppiumDriver driver;
+  private DesiredCapabilities capabilities = new DesiredCapabilities();
+  private CategoryService categoryService = new CategoryServiceImpl();
 
   @When("I launch the application")
   public void shouldOpenTheApplication() throws Exception {
-    setup();
+    categoryService.setCapabilities(capabilities);
     driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
