@@ -2,10 +2,11 @@ package com.jos.dem.appium.step;
 
 import static org.junit.Assert.assertEquals;
 
+import javax.inject.Inject;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,21 +26,16 @@ import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
 public class CategoryStep {
 
+  @Inject
+  private CategoryService categoryService;
+
   private AppiumDriver driver;
-  private DesiredCapabilities capabilities = new DesiredCapabilities();
-  private CategoryService categoryService = new CategoryServiceImpl();
-
   private Logger log = Logger.getLogger(CategoryStep.class.getName());
-
-  @Before
-  public void setup(){
-    categoryService.setCapabilities(capabilities);
-  }
 
   @When("I launch the application")
   public void shouldOpenTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
-    driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), categoryService.getCapabilities());
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
