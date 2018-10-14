@@ -9,7 +9,7 @@ public class CategoryServiceImpl implements CategoryService {
 
   private DesiredCapabilities capabilities = new DesiredCapabilities();
 
-  public CategoryServiceImpl(DesiredCapabilities capabilities){
+  public void CategoryServiceImpl(DesiredCapabilities capabilities){
     capabilities.setCapability("deviceName", "Pixel 2");
     capabilities.setCapability(CapabilityType.BROWSER_NAME, "Android");
     capabilities.setCapability(CapabilityType.VERSION, "9.0");
