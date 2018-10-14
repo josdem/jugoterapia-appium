@@ -7,7 +7,7 @@ ext {
 android {
   compileSdkVersion 28
   defaultConfig {
-    applicationId "appium.jugoterapia.dem.jos.com.jugoterapia_appium"
+    applicationId "com.jos.dem.appium.service"
     minSdkVersion 26
     targetSdkVersion 26
     versionCode 1
@@ -23,16 +23,6 @@ android {
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
-  }
-  packagingOptions {
-    exclude 'META-INF/DEPENDENCIES'
-    exclude 'META-INF/LICENSE'
-    exclude 'META-INF/LICENSE.txt'
-    exclude 'META-INF/license.txt'
-    exclude 'META-INF/NOTICE'
-    exclude 'META-INF/NOTICE.txt'
-    exclude 'META-INF/notice.txt'
-    exclude 'META-INF/ASL2.0'
   }
 }
 
