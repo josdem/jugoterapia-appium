@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 ext {
   cucumberVersion = '1.2.5'
   appiumJavaClient = '6.1.0'
+  daggerVersion = '2.11'
 }
 
 android {
@@ -39,6 +40,8 @@ dependencies {
   implementation "info.cukes:cucumber-java:$cucumberVersion"
   implementation "info.cukes:cucumber-junit:$cucumberVersion"
   implementation "io.appium:java-client:$appiumJavaClient"
+  implementation "com.google.dagger:dagger:$daggerVersion"
+  annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
   implementation files('libs/byte-buddy-1.8.15.jar')
   implementation files('libs/commons-codec-1.10.jar')
   implementation files('libs/commons-exec-1.3.jar')
