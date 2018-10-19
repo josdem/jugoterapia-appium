@@ -13,3 +13,6 @@ gradle test
 
 * http://josdem.io/techtalk/android/appium_automation
 
+**Note:** This project uses [Jugoterapia](https://play.google.com/store/apps/details?id=com.jugoterapia.josdem) project as an Android application for testing, know more about this project here:
+
+http://josdem.io/jugoterapia/jugoterapia/
