@@ -29,7 +29,7 @@ public class CategoryStep {
   private DesiredCapabilities capabilities = new DesiredCapabilities();
   private CategoryService categoryService = new CategoryServiceImpl();
 
-  private Logger log = Logger.getLogger(CategoryStep.class.getName());
+  private Logger log = Logger.getLogger(this.getClass().getName());
 
   @Before
   public void setup(){
