@@ -5,3 +5,4 @@ Feature: Jugoterapia run an end-to-end user flow
       And I should be able to click in the category
       And I should be able to list beverages
       And I should be able to click in a beverage
+      And I should be able to view a recipe
