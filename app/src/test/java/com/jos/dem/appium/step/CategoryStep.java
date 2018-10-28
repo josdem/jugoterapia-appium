@@ -2,6 +2,7 @@ package com.jos.dem.appium.step;
 
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -59,6 +60,15 @@ public class CategoryStep {
   public void shouldClickInCategory() throws Exception {
     log.info("Running: I should be able to click in the category at " + new Date());
     textView.click();
+  }
+
+  @And("I should be able to list beverages")
+  public void shouldListBeverages() throws Exception {
+    log.info("Running: I should be able to list beverages at " + new Date());
+    assertNotNull(driver.findElement(By.id("action_bar_container")));
+    assumeTrue(driver.findElement(By.id("content")) != null);
+
+    log.info("Beverages container exit, reading beverages" + new Date());
   }
 
   @After
