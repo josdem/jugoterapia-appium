@@ -67,8 +67,11 @@ public class CategoryStep {
     log.info("Running: I should be able to list beverages at " + new Date());
     assertNotNull(driver.findElement(By.id("action_bar_container")));
     assumeTrue(driver.findElement(By.id("content")) != null);
+    assumeTrue(driver.findElement(By.id("listViewBeverages")) != null);
 
-    log.info("Beverages container exit, reading beverages" + new Date());
+    log.info("Beverages container and beverage list are there");
+    textView = driver.findElement(By.id("beverageTextView"));
+    assertEquals("Jugo para evitar los calambres", textView.getText());
   }
 
   @After
