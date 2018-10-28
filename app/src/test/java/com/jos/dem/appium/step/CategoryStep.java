@@ -74,6 +74,13 @@ public class CategoryStep {
     assertEquals("Jugo para evitar los calambres", textView.getText());
   }
 
+  @And("I should be able to click in a beverage")
+  public void shouldClickInBeverage() throws Exception {
+    log.info("Running: I should be able to click in a beverage at " + new Date());
+    textView.click();
+  }
+
+
   @After
   public void end(){
     driver.quit();
