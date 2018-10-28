@@ -6,7 +6,7 @@ Appium is an open-source tool for automating native, mobile web, and hybrid appl
 #### To run the project
 
 ```bash
-gradle test
+gradle testDebug
 ```
 
 #### Read this as reference
