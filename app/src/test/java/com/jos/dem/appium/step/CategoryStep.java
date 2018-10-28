@@ -80,6 +80,14 @@ public class CategoryStep {
     textView.click();
   }
 
+  @And("I should be able to view a recipe")
+  public void shouldViewRecipe() throws Exception {
+    log.info("Running: I should be able to view a recipe at " + new Date());
+    assertNotNull(driver.findElement(By.id("name")));
+    assertNotNull(driver.findElement(By.id("image")));
+    assertNotNull(driver.findElement(By.id("ingredients")));
+    assertNotNull(driver.findElement(By.id("recipe")));
+  }
 
   @After
   public void end(){
