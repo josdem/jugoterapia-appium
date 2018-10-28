@@ -3,3 +3,4 @@ Feature: Display all categories
     When I launch the application
     Then I should be able to see the category list
       And I should be able to click in the category
+      And I should be able to list beverages
