@@ -28,12 +28,12 @@ import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
 public class CategoryStep {
 
-  private AppiumDriver<WebElement> driver;
   private WebElement textView;
+  private AppiumDriver<WebElement> driver;
   private DesiredCapabilities capabilities = new DesiredCapabilities();
   private CategoryService categoryService = new CategoryServiceImpl();
 
-  private Logger log = Logger.getLogger(CategoryStep.class.getName());
+  private Logger log = Logger.getLogger(this.getClass().getName());
 
   @Before
   public void setup(){
