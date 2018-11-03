@@ -40,4 +40,6 @@ dependencies {
   implementation "info.cukes:cucumber-java:$cucumberVersion"
   implementation "info.cukes:cucumber-junit:$cucumberVersion"
   implementation "io.appium:java-client:$appiumJavaClient"
+  implementation 'org.apache.commons:commons-configuration2:2.4'
+  implementation 'commons-beanutils:commons-beanutils:1.9.3
 }
