@@ -24,6 +24,7 @@ import cucumber.api.java.Before;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidElement;
 
+import com.jos.dem.appium.util.ConfigurationReader;
 import com.jos.dem.appium.service.CategoryService;
 import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
@@ -44,7 +45,7 @@ public class CategoryStep {
   @When("I launch the application")
   public void shouldLaunchTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
-    driver = new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+    driver = new AppiumDriver(new URL(ConfigurationReader.getProperty("appium.server")), capabilities);
     driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
   }
 
