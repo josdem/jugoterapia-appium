@@ -46,7 +46,7 @@ public class CategoryStep {
   public void shouldLaunchTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
     driver = new AppiumDriver(new URL(ConfigurationReader.getProperty("appium.server")), capabilities);
-    driver.manage().timeouts().implicitlyWait(ConfigurationReader.getProperty("appium.wait"), TimeUnit.SECONDS);
+    driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.getProperty("appium.wait")), TimeUnit.SECONDS);
   }
 
   @Then("I should be able to see the category list")
