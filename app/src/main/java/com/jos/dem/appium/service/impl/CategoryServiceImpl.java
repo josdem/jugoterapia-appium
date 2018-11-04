@@ -10,10 +10,10 @@ public class CategoryServiceImpl implements CategoryService {
 
   public void setCapabilities(DesiredCapabilities capabilities){
     capabilities.setCapability("deviceName", ConfigurationReader.getProperty("device.name"));
-    capabilities.setCapability(CapabilityType.VERSION, "9");
-    capabilities.setCapability("platformName", "Android");
-    capabilities.setCapability("appPackage", "com.jugoterapia.josdem");
-    capabilities.setCapability("appActivity", "com.jugoterapia.josdem.activity.CategoryActivity");
+    capabilities.setCapability(CapabilityType.VERSION, ConfigurationReader.getProperty("device.version"));
+    capabilities.setCapability("platformName", ConfigurationReader.getProperty("device.platform"));
+    capabilities.setCapability("appPackage", ConfigurationReader.getProperty("application.package"));
+    capabilities.setCapability("appActivity", ConfigurationReader.getProperty("application.activity"));
   }
 
 }
