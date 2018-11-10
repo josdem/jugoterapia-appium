@@ -28,12 +28,10 @@ import com.jos.dem.appium.util.ConfigurationReader;
 import com.jos.dem.appium.service.CategoryService;
 import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
-public class CategoryStep {
+public class CategoryStep extends BaseStep {
 
   private WebElement textView;
   private AppiumDriver<WebElement> driver;
-  private DesiredCapabilities capabilities = new DesiredCapabilities();
-  private CategoryService categoryService = new CategoryServiceImpl();
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
@@ -45,8 +43,7 @@ public class CategoryStep {
   @When("I launch the application")
   public void shouldLaunchTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
-    driver = new AppiumDriver(new URL(ConfigurationReader.getProperty("appium.server")), capabilities);
-    driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.getProperty("appium.wait")), TimeUnit.SECONDS);
+    driver.getDriver();
   }
 
   @Then("I should be able to see the category list")
@@ -88,11 +85,6 @@ public class CategoryStep {
     assertNotNull(driver.findElement(By.id("image")));
     assertNotNull(driver.findElement(By.id("ingredients")));
     assertNotNull(driver.findElement(By.id("recipe")));
-  }
-
-  @After
-  public void end(){
-    driver.quit();
   }
 
 }
