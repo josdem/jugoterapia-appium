@@ -4,6 +4,8 @@ import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.io.IOException;
 
+import org.openqa.selenium.support.ui.WebDriverWait
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -26,6 +28,12 @@ public class BaseStep {
       driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.getProperty("appium.wait")), TimeUnit.SECONDS);
     }
     return driver;
+  }
+
+  public static AndroidElement waitForElement(AndroidElement element){
+    WebDriverWait wait =  new WebDriverWait(driver, 20);
+    wait.until(ExpectedConditions.visibilityOf(element));
+    return element;
   }
 
 }
