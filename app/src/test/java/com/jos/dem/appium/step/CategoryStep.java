@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -24,7 +23,7 @@ import io.appium.java_client.android.AndroidElement;
 
 public class CategoryStep extends BaseStep {
 
-  private WebElement textView;
+  private AndroidElement textView;
   private AppiumDriver<AndroidElement> driver;
 
   private Logger log = Logger.getLogger(this.getClass().getName());
@@ -46,7 +45,7 @@ public class CategoryStep extends BaseStep {
   @And("I should be able to click in the category")
   public void shouldClickInCategory() throws Exception {
     log.info("Running: I should be able to click in the category at " + new Date());
-    textView.click();
+    waitForElement(textView).click();
   }
 
   @And("I should be able to list beverages")
@@ -64,7 +63,7 @@ public class CategoryStep extends BaseStep {
   @And("I should be able to click in a beverage")
   public void shouldClickInBeverage() throws Exception {
     log.info("Running: I should be able to click in a beverage at " + new Date());
-    textView.click();
+    waitForElement(textView).click();
   }
 
   @And("I should be able to view a recipe")
