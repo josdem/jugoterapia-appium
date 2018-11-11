@@ -25,6 +25,8 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.android.nativekey.AndroidKey;
 
+import com.jos.dem.appium.util.ConfigurationReader;
+
 public class CategoryStep extends BaseStep {
 
   private AndroidElement textView;
@@ -83,21 +85,21 @@ public class CategoryStep extends BaseStep {
   public void shouldBackToBeverageSection() throws Exception {
     log.info("Running: I should back to the beverage section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(2));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
   }
 
   @And("I should back to category section")
   public void shouldBackToCategorySection() throws Exception {
     log.info("Running: I should back to the category section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(2));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
   }
 
   @And("I should be able to close application")
   public void shouldCloseTheApplication() throws Exception {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(2));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
   }
 
 }
