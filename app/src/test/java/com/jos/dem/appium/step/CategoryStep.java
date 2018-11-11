@@ -18,7 +18,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
-import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -26,7 +26,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 public class CategoryStep extends BaseStep {
 
   private AndroidElement textView;
-  private AppiumDriver<AndroidElement> driver;
+  private AndroidDriver<AndroidElement> driver;
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
@@ -90,7 +90,7 @@ public class CategoryStep extends BaseStep {
   }
 
   @And("I should back to close the application")
-  void shouldBackToCategorySection() throws Exception {
+  void shouldCloseTheApplication() throws Exception {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
   }
