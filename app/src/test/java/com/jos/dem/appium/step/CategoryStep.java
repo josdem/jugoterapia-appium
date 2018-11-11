@@ -79,21 +79,21 @@ public class CategoryStep extends BaseStep {
     assertNotNull(driver.findElement(By.id("recipe")));
   }
 
-  @And("I should back to the beverage section")
+  @And("I should back to beverage section")
   public void shouldBackToBeverageSection() throws Exception {
     log.info("Running: I should back to the beverage section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
     Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(5));
   }
 
-  @And("I should back to the category section")
+  @And("I should back to category section")
   public void shouldBackToCategorySection() throws Exception {
     log.info("Running: I should back to the category section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
     Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(5));
   }
 
-  @And("I should back to close the application")
+  @And("I should be able to close application")
   public void shouldCloseTheApplication() throws Exception {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
