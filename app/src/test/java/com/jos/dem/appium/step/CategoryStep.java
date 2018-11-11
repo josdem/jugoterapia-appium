@@ -31,6 +31,7 @@ public class CategoryStep extends BaseStep {
 
   private AndroidElement textView;
   private AndroidDriver<AndroidElement> driver;
+  private Long timeToSleep = Long.parseLong(ConfigurationReader.getProperty("appium.sleep"));
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
@@ -85,21 +86,21 @@ public class CategoryStep extends BaseStep {
   public void shouldBackToBeverageSection() throws Exception {
     log.info("Running: I should back to the beverage section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
   }
 
   @And("I should back to category section")
   public void shouldBackToCategorySection() throws Exception {
     log.info("Running: I should back to the category section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
   }
 
   @And("I should be able to close application")
   public void shouldCloseTheApplication() throws Exception {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(ConfigurationReader.getProperty("appium.sleep")));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
   }
 
 }
