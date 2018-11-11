@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -78,21 +80,24 @@ public class CategoryStep extends BaseStep {
   }
 
   @And("I should back to the beverage section")
-  void shouldBackToBeverageSection() throws Exception {
+  public void shouldBackToBeverageSection() throws Exception {
     log.info("Running: I should back to the beverage section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(5));
   }
 
   @And("I should back to the category section")
-  void shouldBackToCategorySection() throws Exception {
+  public void shouldBackToCategorySection() throws Exception {
     log.info("Running: I should back to the category section at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(5));
   }
 
   @And("I should back to close the application")
-  void shouldCloseTheApplication() throws Exception {
+  public void shouldCloseTheApplication() throws Exception {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
+    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(5));
   }
 
 }
