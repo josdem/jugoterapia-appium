@@ -20,6 +20,8 @@ import cucumber.api.java.en.Then;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.android.nativekey.AndroidKey;
 
 public class CategoryStep extends BaseStep {
 
@@ -73,6 +75,24 @@ public class CategoryStep extends BaseStep {
     assertNotNull(driver.findElement(By.id("image")));
     assertNotNull(driver.findElement(By.id("ingredients")));
     assertNotNull(driver.findElement(By.id("recipe")));
+  }
+
+  @And("I should back to the beverage section")
+  void shouldBackToBeverageSection() throws Exception {
+    log.info("Running: I should back to the beverage section at " + new Date());
+    driver.pressKey(new KeyEvent(AndroidKey.BACK));
+  }
+
+  @And("I should back to the category section")
+  void shouldBackToCategorySection() throws Exception {
+    log.info("Running: I should back to the category section at " + new Date());
+    driver.pressKey(new KeyEvent(AndroidKey.BACK));
+  }
+
+  @And("I should back to close the application")
+  void shouldBackToCategorySection() throws Exception {
+    log.info("Running: I should be able to close the application at " + new Date());
+    driver.pressKey(new KeyEvent(AndroidKey.BACK));
   }
 
 }
