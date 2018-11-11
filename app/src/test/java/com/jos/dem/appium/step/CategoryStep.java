@@ -18,15 +18,9 @@ import java.util.logging.Logger;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidElement;
-
-import com.jos.dem.appium.util.ConfigurationReader;
-import com.jos.dem.appium.service.CategoryService;
-import com.jos.dem.appium.service.impl.CategoryServiceImpl;
 
 public class CategoryStep extends BaseStep {
 
@@ -34,11 +28,6 @@ public class CategoryStep extends BaseStep {
   private AppiumDriver<WebElement> driver;
 
   private Logger log = Logger.getLogger(this.getClass().getName());
-
-  @Before
-  public void setup(){
-    categoryService.setCapabilities(capabilities);
-  }
 
   @When("I launch the application")
   public void shouldLaunchTheApplication() throws Exception {
