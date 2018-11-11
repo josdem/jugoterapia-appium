@@ -25,14 +25,14 @@ import io.appium.java_client.android.AndroidElement;
 public class CategoryStep extends BaseStep {
 
   private WebElement textView;
-  private AppiumDriver<WebElement> driver;
+  private AppiumDriver<AndroidElement> driver;
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
   @When("I launch the application")
   public void shouldLaunchTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
-    driver.getDriver();
+    driver = getDriver();
   }
 
   @Then("I should be able to see the category list")
