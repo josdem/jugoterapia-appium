@@ -6,3 +6,6 @@ Feature: Jugoterapia run an end-to-end user flow
       And I should be able to list beverages
       And I should be able to click in a beverage
       And I should be able to view a recipe
+      And I should back to beverage section
+      And I should back to the category section
+      And I should be able to close the application
