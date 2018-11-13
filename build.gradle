@@ -1,20 +1,33 @@
 buildscript {
+  ext {
+    springBootVersion = '2.1.0.RELEASE'
+    cucumberVersion = '1.2.5'
+    appiumJavaClient = '6.1.0'
+    junitJupiterVersion = '5.3.1'
+  }
   repositories {
-    google()
-    jcenter()
+    mavenCentral()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.2.1'
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
   }
 }
 
-allprojects {
-  repositories {
-    google()
-    jcenter()
-  }
-}
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-task clean(type: Delete) {
-  delete rootProject.buildDir
+group = 'com.jos.dem.appium'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+dependencies {
+  testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+  testCompile "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+  compile 'org.apache.commons:commons-lang3:3.8.1'
+  compile "info.cukes:cucumber-java:$cucumberVersion"
+  compile "info.cukes:cucumber-junit:$cucumberVersion"
+  compile "io.appium:java-client:$appiumJavaClient"
+  compile 'org.apache.commons:commons-configuration2:2.4'
+  compile 'commons-beanutils:commons-beanutils:1.9.3'
 }
