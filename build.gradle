@@ -22,12 +22,13 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 dependencies {
-  testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
-  testCompile "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
   compile 'org.apache.commons:commons-lang3:3.8.1'
   compile "info.cukes:cucumber-java:$cucumberVersion"
   compile "info.cukes:cucumber-junit:$cucumberVersion"
   compile "io.appium:java-client:$appiumJavaClient"
   compile 'org.apache.commons:commons-configuration2:2.4'
   compile 'commons-beanutils:commons-beanutils:1.9.3'
+  testCompile "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+  testCompile "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
