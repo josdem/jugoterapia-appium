@@ -21,7 +21,13 @@ group = 'com.jos.dem.appium'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+repositories {
+  mavenCentral()
+}
+
+
 dependencies {
+  compile('org.springframework.boot:spring-boot-starter-web')
   compile 'org.apache.commons:commons-lang3:3.8.1'
   compile "info.cukes:cucumber-java:$cucumberVersion"
   compile "info.cukes:cucumber-junit:$cucumberVersion"
