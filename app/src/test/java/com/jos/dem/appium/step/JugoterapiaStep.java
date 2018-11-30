@@ -101,6 +101,7 @@ public class JugoterapiaStep extends BaseStep {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
     Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
+    stopDriver();
   }
 
 }
