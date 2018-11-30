@@ -36,5 +36,9 @@ public class BaseStep {
     return element;
   }
 
+  public static void stopDriver(){
+    driver.quit();
+  }
+
 }
 

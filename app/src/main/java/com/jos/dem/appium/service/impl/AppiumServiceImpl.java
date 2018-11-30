@@ -10,8 +10,8 @@ public class AppiumServiceImpl implements AppiumService {
 
   public void setCapabilities(DesiredCapabilities capabilities){
     capabilities.setCapability("deviceName", ConfigurationReader.getProperty("device.name"));
-    capabilities.setCapability(CapabilityType.VERSION, ConfigurationReader.getProperty("device.version"));
     capabilities.setCapability("platformName", ConfigurationReader.getProperty("device.platform"));
+    capabilities.setCapability("platformVersion", ConfigurationReader.getProperty("device.version"));
     capabilities.setCapability("appPackage", ConfigurationReader.getProperty("application.package"));
     capabilities.setCapability("appActivity", ConfigurationReader.getProperty("application.activity"));
   }
