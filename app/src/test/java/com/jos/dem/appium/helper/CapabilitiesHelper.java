@@ -13,6 +13,8 @@ public class CapabilitiesHelper {
     capabilities.setCapability("platformVersion", ConfigurationReader.getProperty("device.version"));
     capabilities.setCapability("appPackage", ConfigurationReader.getProperty("application.package"));
     capabilities.setCapability("appActivity", ConfigurationReader.getProperty("application.activity"));
+    capabilities.setCapability("testobjectApiKey", ConfigurationReader.getProperty("soucelab.key"));
+    capabilities.setCapability("testobject_app_id", ConfigurationReader.getProperty("soucelab.id"));
   }
 
   public DesiredCapabilities getCapabilities(){
