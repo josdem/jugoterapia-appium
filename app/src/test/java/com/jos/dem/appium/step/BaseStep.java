@@ -21,7 +21,6 @@ public class BaseStep {
 
   public static AndroidDriver<AndroidElement> getDriver() throws IOException {
     if(driver == null){
-      appiumService.setCapabilities(capabilities);
       driver = new AndroidDriver(new URL(ConfigurationReader.getProperty("appium.server")), helper.getCapabilities());
       driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.getProperty("appium.wait")), TimeUnit.SECONDS);
     }
