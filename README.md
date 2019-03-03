@@ -3,6 +3,17 @@ Jugoterapia Appium
 
 [Appium](http://appium.io/) is an open-source tool for automating native, mobile web, and hybrid applications on both iOS and Android. Appium supports app automation across a variety of platforms, like iOS, Android, and Windows. Each platform is supported by one or more “drivers”, which know how to automate that particular platform.
 
+#### To Build Environments
+
+```bash
+gradle -Pjtpenv=local -b environments.gradle settingEnvironment
+```
+
+where:
+
+* `local` To run in emulator or real device locally
+* `saucelabs` To run in [SauceLabs](https://saucelabs.com/)
+
 #### To run the project
 
 ```bash
