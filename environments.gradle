@@ -1,0 +1,12 @@
+ext {
+  configurationDir = "."
+}
+
+def filesToInclude = ["configuration-${jtpenv}.properties"]
+def toDirectory = 'app/src/main/res/'
+task settingEnvironment(type:Copy){
+  from configurationDir
+  into toDirectory
+  include filesToInclude
+  rename { String fileName -> fileName.replace("-${jtpenv}", '') }
+}
