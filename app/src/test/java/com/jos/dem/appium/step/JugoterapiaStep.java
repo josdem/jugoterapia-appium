@@ -63,7 +63,7 @@ public class JugoterapiaStep extends BaseStep {
     textView = driver.findElement(By.id("beverageTextView"));
 
     log.info("Beverages container and beverage list are there");
-    assertEquals("Jugo para evitar los calambres", textView.getText());
+    assertEquals("Anti-constipation Smoothie", textView.getText());
   }
 
   @And("I should be able to click in a beverage")
