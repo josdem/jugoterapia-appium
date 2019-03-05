@@ -46,7 +46,7 @@ public class JugoterapiaStep extends BaseStep {
     log.info("Running: I should be able to see the category list at " + new Date());
     assumeTrue(driver.findElement(By.id("listViewCategories")) != null);
     textView = driver.findElement(By.id("categoryTextView"));
-    assertEquals("Curativos", textView.getText());
+    assertEquals("Healing", textView.getText());
   }
 
   @And("I should be able to click in the category")
