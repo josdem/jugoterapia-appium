@@ -11,17 +11,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
+import com.jos.dem.appium.service.AppiumService;
+import com.jos.dem.appium.service.impl.AppiumServiceImpl;
 import com.jos.dem.appium.util.ConfigurationReader;
-import com.jos.dem.appium.helper.CapabilitiesHelper;
 
 public class BaseStep {
 
   private static AndroidDriver<AndroidElement> driver;
-  private static CapabilitiesHelper helper = new CapabilitiesHelper();
+  private static AppiumService appiumService = new AppiumServiceImpl();
+  private static DesiredCapabilities capabilities = new DesiredCapabilities();
 
   public static AndroidDriver<AndroidElement> getDriver() throws IOException {
     if(driver == null){
-      driver = new AndroidDriver(new URL(ConfigurationReader.getProperty("appium.server")), helper.getCapabilities());
+      appiumService.setCapabilities(capabilities);
+      driver = new AndroidDriver(new URL(ConfigurationReader.getProperty("appium.server")), capabilities);
       driver.manage().timeouts().implicitlyWait(Long.parseLong(ConfigurationReader.getProperty("appium.wait")), TimeUnit.SECONDS);
     }
     return driver;
