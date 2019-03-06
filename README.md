@@ -12,7 +12,20 @@ gradle -Pjtpenv=local -b environments.gradle settingEnvironment
 where:
 
 * `local` To run in emulator or real device locally
-* `saucelabs` To run in [SauceLabs](https://saucelabs.com/)
+* `saucelabs-emulator` To run in [SauceLabs](https://saucelabs.com/) emulator devices
+* `saucelabs-real` To run in [SauceLabs](https://saucelabs.com/) real devices
+
+#### To Set Credentials
+
+```bash
+gradle -Puser=josdem -Papi=api -Pkey=key -b credentials.gradle settingCredentials
+```
+
+where:
+
+* `user` Is your [SauceLabs](https://saucelabs.com/) username
+* `api` Is your [SauceLabs](https://saucelabs.com/) API
+* `key` Is your [SauceLabs](https://saucelabs.com/) key
 
 #### To run the project
 
