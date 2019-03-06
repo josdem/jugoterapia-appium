@@ -19,6 +19,9 @@ public class AppiumServiceImpl implements AppiumService {
     capabilities.setCapability("app", ConfigurationReader.getProperty("application.app"));
     capabilities.setCapability("testobjectApiKey", ConfigurationReader.getProperty("soucelab.key"));
     capabilities.setCapability("testobject_app_id", ConfigurationReader.getProperty("soucelab.id"));
+    capabilities.setCapability("name", ConfigurationReader.getProperty("job.name"));
+    capabilities.setCapability("build", ConfigurationReader.getProperty("job.build"));
+    capabilities.setCapability("tag", ConfigurationReader.getProperty("job.tag"));
   }
 
 }
