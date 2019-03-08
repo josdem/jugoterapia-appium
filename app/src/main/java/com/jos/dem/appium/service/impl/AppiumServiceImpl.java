@@ -25,4 +25,3 @@ public class AppiumServiceImpl implements AppiumService {
   }
 
 }
-

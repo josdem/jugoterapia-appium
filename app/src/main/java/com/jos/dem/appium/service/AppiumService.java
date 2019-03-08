@@ -8,5 +8,3 @@ public interface AppiumService {
   void setCapabilities(DesiredCapabilities capabilities) throws IOException;
 
 }
-
-
