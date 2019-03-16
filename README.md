@@ -15,6 +15,11 @@ where:
 * `saucelabs-emulator` To run in [SauceLabs](https://saucelabs.com/) emulator devices
 * `saucelabs-real` To run in [SauceLabs](https://saucelabs.com/) real devices
 
+#### Seting Environment
+
+* `export jtpenv=local`
+* `echo $jtpenv`
+
 #### To Set Credentials
 
 ```bash
