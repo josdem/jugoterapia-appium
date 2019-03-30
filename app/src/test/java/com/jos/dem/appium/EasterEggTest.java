@@ -18,22 +18,38 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.Date;
 import java.util.logging.Logger;
 
+import org.openqa.selenium.By;
+
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
+
 public class EasterEggTest extends BaseTest {
+
+  private AndroidElement actionBar;
+  private AndroidDriver<AndroidElement> driver;
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
   @When("I click on Jugoterapia header \"([^\"]*)\" times")
   public void shouldClickOnHeaderFiveTimes(Integer times) throws Exception {
     log.info("Running: I click on Jugoterapia header at " + new Date());
+    driver = getDriver();
+    actionBar = driver.findElement(By.id("action_bar"));
+    waitForElement(actionBar).click();
+    waitForElement(actionBar).click();
+    waitForElement(actionBar).click();
+    waitForElement(actionBar).click();
+    waitForElement(actionBar).click();
   }
 
   @Then("I validate I can see hello world message")
   public void shouldValidateGetHelloWorldMessage() throws Exception {
     log.info("Running: I validate I can see hello world message at " + new Date());
-
+    AndroidElement dialogButton = driver.findElement(By.id("button1"));
+    waitForElement(dialogButton).click();
   }
 
 }
