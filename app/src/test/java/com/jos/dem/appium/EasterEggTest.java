@@ -21,6 +21,8 @@ import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
@@ -34,10 +36,15 @@ public class EasterEggTest extends BaseTest {
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
+  @Before
+  public void setup() throws Exception {
+    log.info("Before any test execution");
+    driver = getDriver();
+  }
+
   @When("I click on Jugoterapia header \"([^\"]*)\" times")
   public void shouldClickOnHeaderFiveTimes(Integer times) throws Exception {
     log.info("Running: I click on Jugoterapia header at " + new Date());
-    driver = getDriver();
     actionBar = driver.findElement(By.id("action_bar"));
     IntStream.rangeClosed(1, 5).forEach(
       it -> waitForElement(actionBar).click()
@@ -49,6 +56,11 @@ public class EasterEggTest extends BaseTest {
     log.info("Running: I validate I can see hello world message at " + new Date());
     AndroidElement dialogButton = driver.findElement(By.id("button1"));
     waitForElement(dialogButton).click();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    log.info("After all test execution");
   }
 
 }
