@@ -28,7 +28,7 @@ import com.jos.dem.appium.service.AppiumService;
 import com.jos.dem.appium.service.impl.AppiumServiceImpl;
 import com.jos.dem.appium.util.ConfigurationReader;
 
-public class BaseStep {
+public class BaseTest {
 
   private static AndroidDriver<AndroidElement> driver;
   private static AppiumService appiumService = new AppiumServiceImpl();

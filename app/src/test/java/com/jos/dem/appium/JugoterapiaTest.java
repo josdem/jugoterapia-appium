@@ -40,7 +40,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 
 import com.jos.dem.appium.util.ConfigurationReader;
 
-public class JugoterapiaStep extends BaseStep {
+public class JugoterapiaTest extends BaseTest {
 
   private AndroidElement textView;
   private AndroidDriver<AndroidElement> driver;

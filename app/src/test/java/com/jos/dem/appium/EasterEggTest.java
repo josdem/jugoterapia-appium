@@ -13,20 +13,22 @@
 
 package com.jos.dem.appium.step;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Date;
 import java.util.logging.Logger;
 
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
-public class EasterEggStep extends BaseStep {
+public class EasterEggTest extends BaseTest {
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
   @When("I click on Jugoterapia header \"([^\"]*)\" times")
   public void shouldClickOnHeaderFiveTimes(Integer times) throws Exception {
     log.info("Running: I click on Jugoterapia header at " + new Date());
-
+    assertTrue(false);
   }
 
   @Then("I validate I can see hello world message")
