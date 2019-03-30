@@ -16,6 +16,7 @@ package com.jos.dem.appium.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
+import java.util.stream.IntStream;
 import java.util.logging.Logger;
 
 import org.openqa.selenium.By;
@@ -38,11 +39,9 @@ public class EasterEggTest extends BaseTest {
     log.info("Running: I click on Jugoterapia header at " + new Date());
     driver = getDriver();
     actionBar = driver.findElement(By.id("action_bar"));
-    waitForElement(actionBar).click();
-    waitForElement(actionBar).click();
-    waitForElement(actionBar).click();
-    waitForElement(actionBar).click();
-    waitForElement(actionBar).click();
+    IntStream.rangeClosed(1, 5).forEach(
+      it -> waitForElement(actionBar).click()
+    );
   }
 
   @Then("I validate I can see hello world message")
