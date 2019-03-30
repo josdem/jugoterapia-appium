@@ -28,7 +28,6 @@ public class EasterEggTest extends BaseTest {
   @When("I click on Jugoterapia header \"([^\"]*)\" times")
   public void shouldClickOnHeaderFiveTimes(Integer times) throws Exception {
     log.info("Running: I click on Jugoterapia header at " + new Date());
-    assertTrue(false);
   }
 
   @Then("I validate I can see hello world message")

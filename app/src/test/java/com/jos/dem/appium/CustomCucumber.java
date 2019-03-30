@@ -1,4 +1,21 @@
+/*
+  Copyright 2019 José Luis De la Cruz Morales <joseluis.delacruz@gmail.com>
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
+
 package com.jos.dem.appium;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.io.IOException;
 
 import cucumber.api.CucumberOptions;
 import cucumber.runtime.ClassFinder;
@@ -17,18 +34,16 @@ import cucumber.runtime.model.CucumberTagStatement;
 import gherkin.formatter.model.Tag;
 
 import org.junit.runner.Description;
-import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.ParentRunner;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.model.InitializationError;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import com.jos.dem.appium.util.ConfigurationReader;
 
 public class CustomCucumber extends ParentRunner<FeatureRunner> {
-	private final JUnitReporter jUnitReporter;
-	private final List<FeatureRunner> children = new ArrayList<FeatureRunner>();
 	private final Runtime runtime;
+	private final JUnitReporter jUnitReporter;
+	private final List<FeatureRunner> children = new ArrayList<>();
 
 	public CustomCucumber(Class clazz) throws InitializationError, IOException {
 		super(clazz);
@@ -37,9 +52,8 @@ public class CustomCucumber extends ParentRunner<FeatureRunner> {
 
 		RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(clazz);
 		RuntimeOptions runtimeOptions = runtimeOptionsFactory.create();
-    runtimeOptions.getFilters().add("@RegressionTest");
+    runtimeOptions.getFilters().add(ConfigurationReader.getProperty("test.strategy"));
 
-		//Add tags to Runner class
 		addRunnerTag(runtimeOptions);
 
 		ResourceLoader resourceLoader = new MultiLoader(classLoader);
@@ -47,23 +61,12 @@ public class CustomCucumber extends ParentRunner<FeatureRunner> {
 
 		final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
 
-		// Add tags at runtime
 		addFeatureTag(cucumberFeatures);
 
 		jUnitReporter = new JUnitReporter(runtimeOptions.reporter(classLoader), runtimeOptions.formatter(classLoader), runtimeOptions.isStrict(), new JUnitOptions(runtimeOptions.getJunitOptions()));
 		addChildren(cucumberFeatures);
 	}
 
-	/**
-	 * Create the Runtime. Can be overridden to customize the runtime or backend.
-	 *
-	 * @param resourceLoader used to load resources
-	 * @param classLoader    used to load classes
-	 * @param runtimeOptions configuration
-	 * @return a new runtime
-	 * @throws InitializationError if a JUnit error occurred
-	 * @throws IOException if a class or resource could not be loaded
-	 */
 	protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
 			RuntimeOptions runtimeOptions) throws InitializationError, IOException {
 		ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
