@@ -49,7 +49,7 @@ public class BaseTest {
     return element;
   }
 
-  public static void stopDriver(){
+  public void stopDriver(){
     driver.quit();
   }
 
