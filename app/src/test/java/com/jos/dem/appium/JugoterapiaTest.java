@@ -29,6 +29,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
@@ -48,10 +50,15 @@ public class JugoterapiaTest extends BaseTest {
 
   private Logger log = Logger.getLogger(this.getClass().getName());
 
+  @Before
+  public void setup() throws Exception {
+    log.info("Before any test execution");
+    driver = getDriver();
+  }
+
   @When("I launch the application")
   public void shouldLaunchTheApplication() throws Exception {
     log.info("Running: I launch the application at " + new Date());
-    driver = getDriver();
   }
 
   @Then("I should be able to see the category list")
@@ -113,7 +120,11 @@ public class JugoterapiaTest extends BaseTest {
     log.info("Running: I should be able to close the application at " + new Date());
     driver.pressKey(new KeyEvent(AndroidKey.BACK));
     Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
-    stopDriver();
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    log.info("After all test execution");
   }
 
 }

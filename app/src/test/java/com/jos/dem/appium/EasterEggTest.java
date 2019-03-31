@@ -16,6 +16,7 @@ package com.jos.dem.appium.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
+import java.time.Duration;
 import java.util.stream.IntStream;
 import java.util.logging.Logger;
 
@@ -61,6 +62,7 @@ public class EasterEggTest extends BaseTest {
   @After
   public void tearDown() throws Exception {
     log.info("After all test execution");
+    restartApplication();
   }
 
 }

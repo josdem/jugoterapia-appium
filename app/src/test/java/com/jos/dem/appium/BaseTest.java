@@ -53,5 +53,11 @@ public class BaseTest {
     driver.quit();
   }
 
+  public void restartApplication(){
+    driver.closeApp();
+    driver.launchApp();
+  }
+
+
 }
 
