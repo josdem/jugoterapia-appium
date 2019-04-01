@@ -46,13 +46,19 @@ public class CustomCucumber extends ParentRunner<FeatureRunner> {
 	private final List<FeatureRunner> children = new ArrayList<>();
 
 	public CustomCucumber(Class clazz) throws InitializationError, IOException {
-		super(clazz);
+    super(clazz);
+
+    String testingStrategy = ConfigurationReader.getProperty("test.strategy");
+    if(testingStrategy == null){
+      throw new RuntimeException("Testing strategy needs to be defined");
+    }
+
 		ClassLoader classLoader = clazz.getClassLoader();
 		Assertions.assertNoCucumberAnnotatedMethods(clazz);
 
 		RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(clazz);
 		RuntimeOptions runtimeOptions = runtimeOptionsFactory.create();
-    runtimeOptions.getFilters().add(ConfigurationReader.getProperty("test.strategy"));
+    runtimeOptions.getFilters().add(testingStrategy);
 
 		addRunnerTag(runtimeOptions);
 
