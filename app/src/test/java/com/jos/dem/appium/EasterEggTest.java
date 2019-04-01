@@ -57,12 +57,12 @@ public class EasterEggTest extends BaseTest {
     log.info("Running: I validate I can see hello world message at " + new Date());
     AndroidElement dialogButton = driver.findElement(By.id("button1"));
     waitForElement(dialogButton).click();
+    restartApplication();
   }
 
   @After
   public void tearDown() throws Exception {
     log.info("After all test execution");
-    restartApplication();
   }
 
 }

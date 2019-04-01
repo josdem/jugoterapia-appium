@@ -35,8 +35,8 @@ public class LogoutTest extends BaseTest {
   @When("I am in the main screen")
   public void shouldBeInMainScreen() throws Exception {
     log.info("Running: I am in the main screen at " + new Date());
-    assumeTrue(driver.findElement(By.id("listViewCategories")) != null);
     driver = getDriver();
+    assumeTrue(driver.findElement(By.id("listViewCategories")) != null);
   }
 
   @Then("I verify driver is stopped")

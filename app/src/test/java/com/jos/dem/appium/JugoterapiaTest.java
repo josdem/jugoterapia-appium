@@ -108,12 +108,5 @@ public class JugoterapiaTest extends BaseTest {
     Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
   }
 
-  @And("I should be able to close application")
-  public void shouldCloseTheApplication() throws Exception {
-    log.info("Running: I should be able to close the application at " + new Date());
-    driver.pressKey(new KeyEvent(AndroidKey.BACK));
-    Sleeper.SYSTEM_SLEEPER.sleep(Duration.ofSeconds(timeToSleep));
-  }
-
 }
 

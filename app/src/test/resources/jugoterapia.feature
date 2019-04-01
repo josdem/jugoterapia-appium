@@ -9,7 +9,6 @@ Feature: Jugoterapia run an end-to-end user flow
       And I should be able to view a recipe
       And I should back to beverage section
       And I should back to category section
-      And I should be able to close application
   Scenario: As a user I should be able to finish the process
     When I am in the main screen
     Then I verify driver is stopped
