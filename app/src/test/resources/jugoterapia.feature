@@ -10,3 +10,5 @@ Feature: Jugoterapia run an end-to-end user flow
       And I should back to beverage section
       And I should back to category section
       And I should be able to close application
+    When I am in the main screen
+    Then I verify driver stopped
