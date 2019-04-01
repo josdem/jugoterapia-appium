@@ -65,7 +65,7 @@ public class CustomCucumber extends ParentRunner<FeatureRunner> {
     ResourceLoader resourceLoader = new MultiLoader(classLoader);
     runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
 
-    final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
+    List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
 
     addFeatureTag(cucumberFeatures);
 
