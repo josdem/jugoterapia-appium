@@ -41,11 +41,11 @@ import org.junit.runners.model.InitializationError;
 import com.jos.dem.appium.util.ConfigurationReader;
 
 public class CustomCucumber extends ParentRunner<FeatureRunner> {
-	private final Runtime runtime;
-	private final JUnitReporter jUnitReporter;
-	private final List<FeatureRunner> children = new ArrayList<>();
+  private final Runtime runtime;
+  private final JUnitReporter jUnitReporter;
+  private final List<FeatureRunner> children = new ArrayList<>();
 
-	public CustomCucumber(Class clazz) throws InitializationError, IOException {
+  public CustomCucumber(Class clazz) throws InitializationError, IOException {
     super(clazz);
 
     String testingStrategy = ConfigurationReader.getProperty("test.strategy");
@@ -53,74 +53,77 @@ public class CustomCucumber extends ParentRunner<FeatureRunner> {
       throw new RuntimeException("Testing strategy needs to be defined");
     }
 
-		ClassLoader classLoader = clazz.getClassLoader();
-		Assertions.assertNoCucumberAnnotatedMethods(clazz);
+    ClassLoader classLoader = clazz.getClassLoader();
+    Assertions.assertNoCucumberAnnotatedMethods(clazz);
 
-		RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(clazz);
-		RuntimeOptions runtimeOptions = runtimeOptionsFactory.create();
+    RuntimeOptionsFactory runtimeOptionsFactory = new RuntimeOptionsFactory(clazz);
+    RuntimeOptions runtimeOptions = runtimeOptionsFactory.create();
     runtimeOptions.getFilters().add(testingStrategy);
 
-		addRunnerTag(runtimeOptions);
+    addRunnerTag(runtimeOptions);
 
-		ResourceLoader resourceLoader = new MultiLoader(classLoader);
-		runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
+    ResourceLoader resourceLoader = new MultiLoader(classLoader);
+    runtime = createRuntime(resourceLoader, classLoader, runtimeOptions);
 
-		final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
+    final List<CucumberFeature> cucumberFeatures = runtimeOptions.cucumberFeatures(resourceLoader);
 
-		addFeatureTag(cucumberFeatures);
+    addFeatureTag(cucumberFeatures);
 
-		jUnitReporter = new JUnitReporter(runtimeOptions.reporter(classLoader), runtimeOptions.formatter(classLoader), runtimeOptions.isStrict(), new JUnitOptions(runtimeOptions.getJunitOptions()));
-		addChildren(cucumberFeatures);
+    jUnitReporter = new JUnitReporter(
+        runtimeOptions.reporter(classLoader),
+        runtimeOptions.formatter(classLoader),
+        runtimeOptions.isStrict(),
+        new JUnitOptions(runtimeOptions.getJunitOptions()));
+    addChildren(cucumberFeatures);
 	}
 
-	protected Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,
-			RuntimeOptions runtimeOptions) throws InitializationError, IOException {
-		ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
-		return new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
-	}
+  private Runtime createRuntime(ResourceLoader resourceLoader, ClassLoader classLoader,RuntimeOptions runtimeOptions) throws InitializationError, IOException {
+    ClassFinder classFinder = new ResourceLoaderClassFinder(resourceLoader, classLoader);
+    return new Runtime(resourceLoader, classFinder, classLoader, runtimeOptions);
+  }
 
-	@Override
-	public List<FeatureRunner> getChildren() {
-		return children;
-	}
+  @Override
+  public List<FeatureRunner> getChildren() {
+    return children;
+  }
 
-	@Override
-	protected Description describeChild(FeatureRunner child) {
+  @Override
+  protected Description describeChild(FeatureRunner child) {
 		return child.getDescription();
 	}
 
-	@Override
-	protected void runChild(FeatureRunner child, RunNotifier notifier) {
-		child.run(notifier);
+  @Override
+  protected void runChild(FeatureRunner child, RunNotifier notifier) {
+    child.run(notifier);
+  }
+
+  @Override
+  public void run(RunNotifier notifier) {
+    super.run(notifier);
+    jUnitReporter.done();
+    jUnitReporter.close();
+    runtime.printSummary();
+  }
+
+  private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {
+    for (CucumberFeature cucumberFeature : cucumberFeatures) {
+	    children.add(new FeatureRunner(cucumberFeature, runtime, jUnitReporter));
+    }
+  }
+
+  private void addRunnerTag(RuntimeOptions runtimeOptions) {
+    String tagToAdd = System.getProperty("dynamic.runner.tag.add","");
+    if(!tagToAdd.isEmpty()){
+      runtimeOptions.getFilters().add(tagToAdd);
+    }
 	}
 
-	@Override
-	public void run(RunNotifier notifier) {
-		super.run(notifier);
-		jUnitReporter.done();
-		jUnitReporter.close();
-		runtime.printSummary();
-	}
-
-	private void addChildren(List<CucumberFeature> cucumberFeatures) throws InitializationError {
-		for (CucumberFeature cucumberFeature : cucumberFeatures) {
-			children.add(new FeatureRunner(cucumberFeature, runtime, jUnitReporter));
-		}
-	}
-
-	private void addRunnerTag(RuntimeOptions runtimeOptions) {
-		final String tagToAdd = System.getProperty("dynamic.runner.tag.add","");
-		if(!tagToAdd.isEmpty()){
-			runtimeOptions.getFilters().add(tagToAdd);
-		}
-	}
-
-	private void addFeatureTag(List<CucumberFeature> cucumberFeatures){
-		final String tagToAdd = System.getProperty("dynamic.feature.tag.add","");
-		if(!tagToAdd.isEmpty()){
-			for(CucumberFeature cucumberFeature : cucumberFeatures) {
-				cucumberFeature.getGherkinFeature().getTags().add(new Tag(tagToAdd, 0));
-			}
-		}
-	}
+  private void addFeatureTag(List<CucumberFeature> cucumberFeatures){
+    String tagToAdd = System.getProperty("dynamic.feature.tag.add","");
+    if(!tagToAdd.isEmpty()){
+      for(CucumberFeature cucumberFeature : cucumberFeatures) {
+        cucumberFeature.getGherkinFeature().getTags().add(new Tag(tagToAdd, 0));
+      }
+    }
+  }
 }
